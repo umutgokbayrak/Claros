@@ -1,0 +1,26 @@
+body,a{
+	font:normal 11px arial,sans-serif;
+	color:#000;
+	text-decoration:none;
+	outline:none;
+}
+
+body{
+	text-align:left;
+	overflow:auto;
+	background:#F6F6F6;
+	min-width:935px;
+	min-height:570px;
+	scrollbar-face-color: #d8e3e8; 
+	scrollbar-shadow-color: #ffffff; 
+	scrollbar-highlight-color: #ffffff; 
+	scrollbar-3dlight-color: #d8e3e8;
+	scrollbar-darkshadow-color: #d8e3e8; 
+	scrollbar-track-color: #ffffff; 
+	scrollbar-arrow-color: #ffffff;
+}
+
+body,form{
+	margin:0;
+	padding:0;
+}

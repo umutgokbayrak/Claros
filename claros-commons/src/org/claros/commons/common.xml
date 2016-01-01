@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+
+	<bean id="commonUtility" 
+		class="org.claros.commons.utility.impl.CommonUtilityImpl">
+	</bean>
+
+	<bean id="formatter" 
+		class="org.claros.commons.utility.impl.FormatterImpl">
+	</bean>
+
+	<bean id="freemarkerProperties" 
+		class="org.apache.commons.configuration.PropertiesConfiguration">
+		<constructor-arg>
+			<value>freemarker.properties</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="templateContentProcessor"
+		class="org.claros.commons.utility.impl.TemplateContentProcessorImpl"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="config" ref="freemarkerProperties"></property>
+	</bean>
+
+	<bean id="md5" 
+		class="org.claros.commons.utility.impl.MD5Impl"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+	</bean>
+
+</beans>

@@ -1,0 +1,34 @@
+#clarosPanel.panel .hd { 
+	padding:0; 
+	border:none; 
+	background:transparent url(../assets/img/aqua-hd-bg.gif); 
+	color:#000; 
+	height:22px; 
+	margin-left:7px; 
+	margin-right:7px; 
+	text-align:center; 
+	overflow:visible; 
+}
+
+#clarosPanel.panel .hd span { 
+	vertical-align:middle; 
+	line-height:22px; 
+}
+
+#clarosPanel.panel .hd .tl { 
+	width:7px; 
+	height:22px; 
+	top:0; 
+	left:0; 
+	background:transparent url(../assets/img/aqua-hd-lt.gif); 
+	position:absolute; 
+}
+
+#clarosPanel.panel .hd .tr { 
+	width:7px;
+	height:22px;
+	top:0;
+	right:0;
+	background:transparent url(../assets/img/aqua-hd-rt.gif);
+	position:absolute; 
+}

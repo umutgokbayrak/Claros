@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Default Java Anti Spam ENgine (JASEN) Configuration File -->
+<jasen-config>
+	
+	<scanner 
+		calculator="org.jasen.core.calculators.CompoundCalculator" 
+		mimeParser="org.jasen.core.parsers.StandardMimeMessageParser" 
+		headerParser="org.jasen.core.parsers.GenericReceivedHeaderParser" 
+		tokenizer="org.jasen.core.token.EmailTokenizer"
+		result="org.jasen.core.StandardScanResult" 
+		dnsResolver="org.jasen.net.JasenDNSResolver" 
+		inetResolver="org.jasen.net.JasenInetAddressResolver"  
+		tokenLimit="30"
+		errorHandler="org.jasen.error.SystemErrorHandler"
+		boundary="0.01"/>
+				
+	<engine 
+		confidence="0.9" 
+		guess="0.5" 
+		esf="0.5" 
+		ftt="25"/>
+		
+	<!-- 
+		The default configuration for the native HTML Parser 
+	-->
+	<parser
+		contrastThreshold="0.2" 
+		microElementSize="5"
+		microFontSize="1"
+		/>			
+		
+	<!-- Configuration for the auto update thread -->
+	<auto-update 
+		url="http://jasen.sourceforge.net/updates/" 
+		parcel="jasen-update.xml"
+		frequency="15"
+		enabled="false"
+		checkOnStartup="false"
+		readBuffer="1024"
+		readTimeout="5000"
+		errorHandler="org.jasen.error.SystemErrorHandler"/>	
+
+	<plugin 
+		name="InvisiMailScannner" 
+		displayName="Empty Mail Scanner"
+		description="Detects emails which contain no body content and no subject.  This is a common indication of spam and/or denial of service messages"
+		priority="0" 
+		type="org.jasen.plugins.InvisiMailScanner" 
+		properties="default/InvisiMailScanner.properties"/>
+	
+	<plugin 
+		name="RobinsonScanner" 
+		displayName="AI Scanner"
+		description="Uses probability based intelligence together with a database of spam characteristics to analyze and detect spam"
+		priority="1"	
+		type="org.jasen.plugins.RobinsonScanner" 
+		properties="default/RobinsonScanner.properties"/>
+
+	<plugin 
+		name="HTMLConcealmentScanner" 
+		priority="2" 
+		displayName="White Noise Detector"
+		description="Detects the presence of deliberately concealed information in an email.  This is a technique often used by spammers to confuse anti-spam technology by adding high levels of noise into the message"
+		type="org.jasen.plugins.HTMLConcealmentScanner" 
+		properties="default/HTMLConcealmentScanner.properties"/>
+		
+	<plugin 
+		name="ImageDominanceScanner" 
+		displayName="Image Misuse Detector"
+		description="Detects unusal ratios of embedded images.  A common feature of non-textual spam"
+		priority="3" 
+		type="org.jasen.plugins.ImageDominanceScanner" 
+		properties="default/ImageDominanceScanner.properties"/>
+		
+	<plugin
+		name="TagSourceCgiScanner" 
+		displayName="Bug Detector"
+		description="Detects mail bugs.  These are images or other embedded objects which transmit secret messages to remote servers when an email is opened"
+		priority="4" 
+		type="org.jasen.plugins.TagSourceCgiScanner" 
+		properties="default/TagSrcCgiScanner.properties"/>
+		
+	<plugin 
+		name="TagSourcePortScanner" 
+		displayName="Port Scanner"
+		description="Detects irregular URLs which reference unknown TCP ports.  This is common in worm and/or trojan emails"
+		priority="5" 
+		type="org.jasen.plugins.TagSourcePortScanner" 
+		properties="default/TagSrcPortScanner.properties"/>
+		
+	<plugin 
+		name="TagFalseAnchorScanner" 
+		displayName="Phishing Detector"
+		description="Detects emails which appear to falsly masquerade as a legitimate business such as a bank.  Also known as phishing"
+		priority="6" 
+		type="org.jasen.plugins.TagFalseAnchorScanner" 
+		properties="default/TagFalseAnchorScanner.properties"/>
+		
+	<plugin 
+		name="ObfuscatedCharacterScanner" 
+		displayName="Character Misuse Scanner"
+		description="Detects obvious replacements of legitimate characters, such as @ in place of A.  This often occurs in spam"
+		priority="7" 
+		type="org.jasen.plugins.ObfuscatedCharacterScanner" 
+		properties="default/ObfuscatedCharacterScanner.properties"/>
+		
+	<plugin 
+		name="AnomalousCharacterScanner" 
+		displayName="Shouting Detector"
+		description="Detects excessive use of emphasis grammar such as exclamation marks, commonly found in spam"
+		priority="8" 
+		type="org.jasen.plugins.AnomalousCharacterScanner" 
+		properties="default/AnomalousCharacterScanner.properties"/>
+		
+	<plugin 
+		name="AttachmentScanner" 
+		priority="9" 
+		displayName="Worm and Trojan Detector"
+		description="Detects the presence of potentially dangerous email attachments which may indicate the presence of a worm, virus or trojan"
+		type="org.jasen.plugins.AttachmentScanner" 
+		properties="default/AttachmentScanner.properties"/>
+		
+	<plugin 
+		name="RecipientScanner" 
+		priority="10" 
+		displayName="Bulk List Detector"
+		description="Detects excessive numbers of email recipients which can often indicate a mass distribution spam"
+		type="org.jasen.plugins.RecipientScanner" 
+		properties="default/RecipientScanner.properties"/>
+		
+	<plugin 
+		name="SenderAddressValidationScanner" 
+		priority="11" 
+		displayName="Fraud Detector"
+		description="Detects mail server fraud.  This can occur when the sending mail server reports a fraudulent internet IP address or domain"
+		type="org.jasen.plugins.SenderAddressValidationScanner" 
+		properties="default/SenderAddressValidationScanner.properties"/>
+				
+	<plugin 
+		name="FromAddressValidationScanner" 
+		priority="12" 
+		displayName="Forgery Detector"
+		description="Detects sender forgeries.  This can occur when a sender fraudulently reports their email address as different to their real address"
+		type="org.jasen.plugins.FromAddressValidationScanner" 
+		properties="default/FromAddressValidationScanner.properties"/>		
+		
+	<plugin 
+		name="HeuristicScanner" 
+		priority="13" 
+		displayName="Email Fingerprint Scanner" 
+		description="Scans emails looking for known spam fingerprints.  These are certain combinations of characteristics known to indicate spam"
+		type="org.jasen.plugins.HeuristicScanner" 
+		properties="default/HeuristicScanner.properties"/>
+		
+	<plugin 
+		name="KeywordScanner" 
+		priority="14" 
+		displayName="Keyword Scanner"
+		description="Performs a simple keyword scan of an email looking for known spam words and/or profanity"
+		type="org.jasen.plugins.KeywordScanner" 
+		properties="default/KeywordScanner.properties"/>
+		
+	<plugin 
+		name="RBLScanner" 
+		priority="15" 
+		displayName="Real Time Black List Detector"
+		description="Checks the delivery history of an email looking for black-listed mail servers.  Also known as Realtime Blackhole Lists or RBLs"
+		type="org.jasen.plugins.RBLScanner" 
+		properties="default/RBLScanner.properties"/>
+		
+	<!--<plugin name="SenderServerValidationScanner" priority="13" type="org.jasen.plugins.SenderServerValidationScanner" properties="org/jasen/plugins/SenderServerValidationScanner.properties"/>-->
+	
+</jasen-config>

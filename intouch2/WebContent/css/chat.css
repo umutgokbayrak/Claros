@@ -1,0 +1,241 @@
+/* CSS Document */
+#chat {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #d8e3e8;
+	scrollbar-face-color: #d8e3e8; 
+	scrollbar-shadow-color: #ffffff; 
+	scrollbar-highlight-color: #ffffff; 
+	scrollbar-3dlight-color: #d8e3e8;
+	scrollbar-darkshadow-color: #d8e3e8; 
+	scrollbar-track-color: #ffffff; 
+	scrollbar-arrow-color: #ffffff;
+}
+#chat td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #262626;
+}
+#chat a:link {
+	color: #0c4363;
+	text-decoration: none;
+	outline:none;
+}
+#chat a:visited {
+	color: #0c4363;
+	text-decoration: none;
+	outline:none;
+}
+#chat a:hover {
+	color: #0c4363;
+	text-decoration: none;
+	outline:none;
+}
+#chat a:active {
+	color: #0c4363;
+	text-decoration: none;
+	outline:none;
+}
+
+#chatcontacts {
+	position:absolute;
+	left:22px;
+	top:90px;
+	width:189px;
+	z-index:4;
+	filter:alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	overflow: visible;
+}
+
+#contactsscroll {
+	width: 154px;
+	height: 337px;
+	overflow: hidden;
+	position: relative;
+	padding-top: 10px;
+	outline:none;
+}
+
+#chatcontacts #contactsscroll #contact {
+	height: 20px;
+	width: 134px;
+	outline:none;
+}
+
+.contactHover {
+	height: 20px;
+	width: 134px;
+	outline:none;
+	background:url(../images/chat/bg/contact_item_hover_bg.gif)
+}
+
+#chatcontacts #contactsscroll #contact #contactname {
+	height: 20px;
+	width: 114px;
+	overflow: hidden;
+	margin-left: 5px;
+	outline:none;
+}
+#chatcontacts #contactsscroll #contact #indicator {
+	margin-left: 5px;
+	outline:none;
+}
+
+#infowin #infotexttitle {
+	color: #5b92b1;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+#infowin #infotextstatus {
+	color: #4f4f4f;
+}
+
+#infowin {
+	position:absolute;
+	left:188px;
+	top:57px;
+	z-index:1000;
+	width:199px;
+}
+
+#toolbar {
+	position:absolute;
+	left:25px;
+	top:536px;
+	width:780px;
+	height:58px;
+	z-index:1001;
+	visibility: visible;
+	margin-right:25px;
+}
+
+.chatWin {
+	position:absolute;
+	left:632px;
+	top:45px;
+	width:234px;
+	height:242px;
+	z-index:1002;
+	overflow:hidden;
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	opacity: 0;
+}
+
+.chatWin #chatWinMsg {
+	color: #666666;
+	text-decoration: none;
+	margin-left: 15px;
+	overflow: hidden;
+	width: 203px;
+	margin-top: 11px;
+	height: 35px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: solid 0px #FFFFFF;
+}
+
+.chatWin #chatWinFrom {
+	font-weight: bold;
+	color: #6492ac;
+}
+
+.chatWin #chatWinText {
+	color: #262626;
+}
+
+.chatWin #chatWinTo {
+	font-weight: bold;
+	color: #409035;
+}
+.chatWin #chatWinTitleBar {
+	color: #0c4363;
+	font-weight: bold;
+	overflow: hidden;
+	width: 100%;
+}
+
+#chatScroll {
+	height:152px;
+	position:relative;
+	overflow:auto;
+	outline:hidden;
+}
+
+.handleActive {
+	background: url(../images/chat/bg/chatwin_top.gif);
+}
+
+.handle {
+	background: url(../images/chat/bg/chatwin_top_disactive.gif);
+	color:#666666;
+}
+
+.handleNotice {
+	background: url(../images/chat/bg/chatwin_top_notice.gif);
+	color:white;
+}
+
+.handleNotice td {
+	color:white;
+}
+
+.curtain {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 6000;
+	width: 100%;
+	height: 500px;
+	background-color: #000;
+	filter:alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	display:none;
+}
+
+.curtain td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #EBEBEB;
+}
+
+#askWin {
+	position:absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height: 134px;
+	width: 218px;
+	background-image:url(../images/chat/bg/askwin_bg.gif);
+	background-repeat:no-repeat;
+	padding-top:10px;
+	display:none;
+	z-index:5999;
+	filter:alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+#login {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 6001;
+	width: 100%;
+	height: 500px;
+	outline:none;
+	background-color: #d8e3e8;
+}
+
+#chatlogin #logincenter #loginform input {
+	width: 200px;
+	border: 1px solid #A3C6E8;
+	height: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:11px;
+}

@@ -1,0 +1,14 @@
+BODY {
+	font-family: Arial, Tahoma, sans-serif;
+	font-size: 10pt;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+blockquote {
+	border-left: 1px solid #999999;
+	margin-left: 0px;
+	padding-left: 5px;
+}

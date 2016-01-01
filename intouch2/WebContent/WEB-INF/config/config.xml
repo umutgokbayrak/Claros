@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<claros-config>
+	<!-- Common parameters -->
+	<common-params>
+		<!-- 
+			Default character encoding for the encoding of the pages. You probably won't need 
+			to change this. 
+		 -->
+		<charset>utf-8</charset>
+		<request-charset>iso-8859-9</request-charset>
+
+		<!-- 
+			This settting has no effect as of version 2.2
+		 -->
+		<server-timezone>Europe/Istanbul</server-timezone>
+		<!-- 
+			This is the folder where users will be uploading the attachments temporarily. 
+			Please make sure the user running the application server process can read/write 
+			to this folder. 
+		 -->
+		<tmp-dir>c:/transfer/intouch/attach</tmp-dir>
+		<!-- 
+			This is the maximum MB's of a single attachment the users can send. 
+		 -->
+		<max-attachment-size>5</max-attachment-size>
+		<!-- 
+			This is the maximum MB's of a single mail can be. 
+		 -->
+		<max-mail-size>10</max-mail-size>
+		<title>Claros inTouch 2.2</title>
+		<!-- 
+			On the fly spam checking is unique feature of Claros inTouch but this dramatically
+			drops the performance. So please use spamassasin. 
+		 -->
+		<spam-check-enabled>false</spam-check-enabled>
+		<!-- 
+			The default language users will see when they first see the login page. 
+			
+			Possible values are : 
+			Danish: da, German: de, English: en, Spanish: es, French: fr, 
+			Italian: it, Polish: pl, Brazilian Portuguese: pt_br, Slovak: sk
+			Turkish: tr, Vietnamese: vi, Simplified Chinese: zh_cn_utf8
+			Traditional Chinese: zh_tw_utf8
+		 -->
+		<default-lang>en</default-lang>
+		<!-- 
+			This is the default RSS feed for the users. 
+		 -->
+		<rss-feed>http://rss.cnn.com/rss/cnn_topstories.rss</rss-feed>
+		<!-- 
+			For performance reasons not all the e-mail headers are shown at the mailbox view. 
+			This is because of limitations of the HTML browser, network transfer and the usability. 
+			
+			This setting enhances performance extremely if used with the server side imap 
+			sorting setting below. 
+			
+			Please type how many e-mail headers you wish to see in each mailbox page. 
+		 -->
+		<mailbox-page-size>50</mailbox-page-size>
+		<!-- 
+			 Server Side IMAP sort enhances performance a lot. So keep the 
+			 following variable to false if there is no exceptional case. Please note that
+			 server side sorting is completely dependent on your IMAP server implementation
+			 and if there are problems with sorting the accented characters etc... please 
+			 consult the IMAP server vendor. If this method doesn't work for you change 
+			 the following variable to true and Claros will do the sorting depending on your
+			 locale settings. (slower but better).
+			 
+			 This setting has no effect if you are using the pop3 protocol.
+		-->
+		<disable-imap-sort>false</disable-imap-sort>
+		<!-- 
+			INBOX is pinged transparently for the arrival of new e-mail periodically. 
+			Please indicate how many seconds each check should occur. 
+			
+			The smaller the number, more responsive the INBOX but will make a higher load
+			on the server. 
+			
+			Caution! do not make it below 10 seconds for a stable system. 
+		 -->
+		<mail-check-interval>20</mail-check-interval>
+		
+		<!-- 
+			Appending the server signature. If this option is enabled you 
+			can edit server_signature.txt
+			
+			Values: true or false  
+		-->
+		<append-signature>true</append-signature>
+	</common-params>
+
+	<!-- 
+		Claros inTouch will create some IMAP/Pop3 folders prior to their 
+		first login. You can set the names of the folders which will be created
+		in their profiles. Please do not use accented characters.
+	 -->
+	<mail-folder-names>
+		<folder-junk>Junk Mail</folder-junk>
+		<folder-sent>Sent Mail</folder-sent>
+		<folder-drafts>Drafts</folder-drafts>
+		<folder-trash>Trash</folder-trash>
+	</mail-folder-names>
+
+	<!-- 
+		Claros inTouch's chat module can connect with other Jabber transports
+		if they are installed on the server side. 
+		
+		If you have any of the following transports you can set the URL's of the
+		transports. If you don't know what those means, leave them as is. 
+	 -->
+	<chat>
+		<default-domain>claros.org</default-domain>
+		<msn-transport>msn.claros.org</msn-transport>
+		<yahoo-transport>yahoo.claros.org</yahoo-transport>
+		<icq-transport>icq.claros.org</icq-transport>
+		<aol-transport>aol.claros.org</aol-transport>
+	</chat>
+	
+	<!--
+		Please configure ONLY ONE server setting below. 
+		Claros inTouch supports many protocols including 
+		imap, pop3, imaps, pop3s, smtp, smtps
+		
+		The following sample configurations can help you move faster. The fields below means: 
+	 
+	 	shortname: name anything you want.
+	 	fetch-server: imap or pop3 server's hostname/ip you will be using.
+	 	fetch-server-port: imap: 143 pop3: 110 imaps: 993 pop3s: 995  
+	 	fetch-protocol: imap or pop3
+	 	fetch-ssl: if your imap or pop3 server supports SSL(imaps or pop3s) 
+	 			   set this to true else false.
+	 	smtp-server: smtp server's hostname/ip you will be using.
+	 	smtp-server-port: smtp: 25 smtps: 465
+	 	smtp-authenticated: if your smtp server uses auth to prevent spammers set this to true.
+	 	smtp-ssl: if your smtp server supports SSL(smtps) set this to true
+	 	folder-namespace: some imap implementations have folder names like INBOX.Trash, 
+	 					  INBOX.Drafts etc... So your folder namespace is INBOX. For example: 
+	 					  Courier and Cyrus Imap servers are using such namespaces. But dovecot
+	 					  probably doesn't. Please do not forget the . at the rightmost side. 
+	 					  If your imap server is not using folder namespaces or you are using the
+	 					  pop3 mode, leave this field blank. Such as <folder-namespace></folder-namespace>   
+	-->
+	<servers>
+		<!-- pop3s sample Using as a GMAIL Client -->
+		<!-- 
+		<server>
+			<shortname>gmail</shortname>
+			<fetch-server>pop.gmail.com</fetch-server>
+			<fetch-server-port>995</fetch-server-port>
+			<fetch-protocol>pop3</fetch-protocol>
+			<fetch-ssl>true</fetch-ssl>
+			<smtp-server>smtp.gmail.com</smtp-server>
+			<smtp-server-port>465</smtp-server-port>
+			<smtp-authenticated>true</smtp-authenticated>
+			<smtp-ssl>true</smtp-ssl>
+			<folder-namespace></folder-namespace>
+		</server>
+		-->
+		<server>
+			<shortname>localhost</shortname>
+			<fetch-server>localhost</fetch-server>
+			<fetch-server-port>143</fetch-server-port>
+			<fetch-protocol>imap</fetch-protocol>
+			<fetch-ssl>false</fetch-ssl>
+			<smtp-server>localhost</smtp-server>
+			<smtp-server-port>25</smtp-server-port>
+			<smtp-authenticated>true</smtp-authenticated>
+			<smtp-ssl>false</smtp-ssl>
+			<folder-namespace></folder-namespace>
+		</server>
+		<!-- 
+		<server>
+			<shortname>localhost</shortname>
+			<fetch-server>localhost</fetch-server>
+			<fetch-server-port>143</fetch-server-port>
+			<fetch-protocol>imap</fetch-protocol>
+			<fetch-ssl>false</fetch-ssl>
+			<smtp-server>localhost</smtp-server>
+			<smtp-server-port>25</smtp-server-port>
+			<smtp-authenticated>true</smtp-authenticated>
+			<smtp-ssl>false</smtp-ssl>
+			<folder-namespace></folder-namespace>
+		</server>
+		<server>
+			<shortname>claros</shortname>
+			<fetch-server>192.168.2.4</fetch-server>
+			<fetch-server-port>143</fetch-server-port>
+			<fetch-protocol>imap</fetch-protocol>
+			<fetch-ssl>false</fetch-ssl>
+			<smtp-server>localhost</smtp-server>
+			<smtp-server-port>25</smtp-server-port>
+			<smtp-authenticated>true</smtp-authenticated>
+			<smtp-ssl>false</smtp-ssl>
+			<folder-namespace></folder-namespace>
+		</server>
+		-->
+	</servers>
+
+	<!--
+		You need to configure a valid user account for the server configured above.
+		This will be the e-mail settings who will be sending e-mail reminders
+		to users.
+		
+		Please keep this file in a safe place!
+	 -->
+	<calendar-smtp>
+		<mail-from-name>Claros Calendar</mail-from-name>
+		<mail-from-address></mail-from-address>
+		<username>username@domain.com</username>
+		<password>CHANGE THIS</password>
+	</calendar-smtp>
+
+	<webdisk>
+		<!-- 
+			All webdisk are stored in a folder structure starting from the following directory. 
+		 -->
+		<home-base>c:/transfer/intouch/webdisk</home-base>
+		<!-- 
+			The limit of the file user can upload to his/her webdisk. 
+		 -->
+		<upload-limit-size>5</upload-limit-size>
+		<!-- 
+			Webdisk can show thumbnails for images. But there should be a limit. 
+			Webdisk will not show thumbnails for images greater than the size of the
+			following setting. The setting is in kilobytes. 
+		 -->
+		<img-preview-size>100</img-preview-size>
+		<!-- 
+			All users will have an upload directory with the name of the following setting.
+			This folder will not be deletable and will be used for uploading files to their
+			webdisks. Afterwards they can move the file to any folder they like.
+		 -->
+		 <upload-dir-name>My Uploads</upload-dir-name>
+	</webdisk>
+
+	<!-- 
+		Database connection parameters.
+		You have to create the database tables before you continue. 
+		The database tables can be created with the script provided at the
+		SQL directory of the distribution.
+		
+		Please DO NOT change the term file at the "id" field.
+	 -->
+	<db-config>
+		<!-- 
+		<db>
+			<id>file</id>
+			<database>jdbc:mysql://localhost:3306/intouch</database>
+			<driver>com.mysql.jdbc.Driver</driver>
+			<login>root</login>
+			<password>CHANGE THIS</password>
+		</db>
+		-->
+		<db>
+			<id>file</id>
+			<database>jdbc:postgresql:intouch</database>
+			<driver>org.postgresql.Driver</driver>
+			<login>postgres</login>
+			<password>CHANGE THIS</password>
+		</db>
+	</db-config>
+</claros-config>

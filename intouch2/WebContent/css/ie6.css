@@ -1,0 +1,7 @@
+body{
+	width:expression(document.documentElement.clientWidth < 935 ? "935px" : "auto");
+	height:expression(document.documentElement.clientHeight < 700 ? "700px" : "auto");
+	overflow-y:auto;
+}
+#header ul.nav a span{margin-top:4px;}
+
